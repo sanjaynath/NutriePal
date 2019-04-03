@@ -1,0 +1,32 @@
+<html> 
+
+<head>
+<title>NutriePal</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+
+    <h1>Food Classifier (upload any image)</h1>
+
+    <img src="{{ picture_path }}" width="500" height="500" alt='' class=''/>
+
+    <form action="/predict" method="post" enctype="multipart/form-data">
+      <input type="file" name="image" value="Upload">
+      <input type="submit" value="Predict"> {% if label %} {{ label }} {% endif %}
+    </form>
+
+	<h2>Nutrients</h2>
+    <div> {{nutrients}}</div>
+	
+	<h2>Nutrition Recommended products</h2>
+	<div>{{nut_recomm}}</div>
+
+	<h2>Recipe Recommended products</h2>
+	<div>{{recipe_recomm}}</div>
+    
+
+</body>
+
+</html>

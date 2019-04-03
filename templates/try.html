@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html> 
+
+<head>
+<title>NutriePavfxd</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+/* Create two equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 50%;
+  padding: 10px;
+  height: 500px; /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+</style>
+</head>
+
+<body>
+	<div class="row">
+		<div class = "column">
+    	<!--	<h1>Food Classifier (upload any image)</h1> -->
+
+    		<!-- <img src="{{ picture_path }}" width="500" height="500" alt='' class=''/> -->
+
+    		<form action="/predict" method="post" enctype="multipart/form-data">
+      		<input type="file" name="image" value="Upload">
+      		<input type="submit" value="Predict"> {% if label %} {{ label }} {% endif %}
+    		</form>
+
+			<h2>Nutrients jfsggdsh</h2>
+    		<div> {{nutrients}} </div>
+    	</div>
+	
+		<div class="column" color="red">
+			<style color = "red"><h2>Nutrition Recommended products</h2></style>
+			<div>{{nut_recomm}}</div>
+		
+			<h2>Recipe dsfdsf Recommended products</h2>
+			<div>{{recipe_recomm}}</div>
+			<p> zfvsdh </p>
+		</div>
+	</div>
+    
+
+</body>
+
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Nutripal </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../static/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="../static/style.css">   
+</head>
+<body>
+
+    <div class="page-header">
+        <div class="row">
+            <div class="col-md-12"><center><h1>Food Classifier and Recommender System</h1></center></div>
+            <!--<div class="col-md-4"><center><h1><a href="/search">Search</a></h1></center></div>
+            <div class="col-md-4"><center><h1><a href="/full_list">Complete List</a></h1></center></div>
+            <div class="col-md-4"><center><h1><a href="/account/login">Login</a></h1></center></div> -->
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="column">
+            <img src = "../static/example.jpg" width = 100% height = "610px" >
+                <form action="/predict" method="post" enctype="multipart/form-data">
+                    <input type="file" name="image" value="Upload">
+                    <input type="submit" value="Predict"> 
+                    {% if label %} {{ label }} {% endif %}
+                </form>
+
+                <form action="/history" method="post" enctype="multipart/form-data">
+                    <input type="submit" value="history"> 
+                </form>
+               <!-- <h2>Nutrients</h2>
+                <div width="400px" height="200px"> {{nutrients}}</div>-->
+            <h1>{% if label %} {{ label }} {% endif %}</h1>
+            <h3 class = "helvetica"> Nutrients(per 100g) </h3>
+            <table>
+                <tr>
+                    <th> 
+                        <ul>
+                            <li> Energy     : {{eg}} </li>
+                            <li> Carbs      : {{cb}}</li>
+                            <li> Protein    : {{pr}}</li>
+                            <li> Fat        : {{ft}}</li>
+                            <li> Fiber      : {{fb}}</li>
+                            <li> Cholestrol : {{cl}}</li>
+                        </ul>    
+                    </th>
+                </tr>
+            </table>
+                
+            <!--
+                <h2>Nutrition Recommended products</h2>
+                <div>{{nut_recomm}}</div>
+
+                <h2>Recipe Recommended products</h2>
+                <div>{{recipe_recomm}}</div>
+            -->
+
+            <h4 class = "helvetica"> Nutrients </h4>
+        </div>
+        <div class="column">
+            <h3 class = "helvetica"> Nutrient based recommendations </h3>
+            <table>
+                <tr>
+                    <th colspan="3"> <img src = "{{nrecimg1}}" height = 45px> <div>{{nrec1}}</div></th>
+                    <th> 
+                        <ul>
+                            <li> Energy     : {{egn1}} </li>
+                            <li> Carbs      : {{cbn1}}</li>
+                            <li> Protein    : {{prn1}}</li>
+                            <li> Fat        : {{ftn1}}</li>
+                            <li> Fiber      : {{fbn1}}</li>
+                            <li> Cholestrol : {{cln1}}</li>
+                        </ul>    
+                    </th>
+                </tr>
+                <tr>
+                    <th colspan="3"> <img src = "{{nrecimg2}}" height = 45px>
+                    <div>{{nrec2}}</div> </th>
+                    <th> 
+                        <ul>
+                            <li> Energy     : {{egn2}} </li>
+                            <li> Carbs      : {{cbn2}}</li>
+                            <li> Protein    : {{prn2}}</li>
+                            <li> Fat        : {{ftn2}}</li>
+                            <li> Fiber      : {{fbn2}}</li>
+                            <li> Cholestrol : {{cln2}}</li>
+                        </ul>    
+                    </th>
+                </tr>
+                <tr>
+                    <th colspan="3"> <img src = "{{nrecimg3}}" height = 45px> <div>{{nrec3}}</div></th>
+                    <th> 
+                        <ul>
+                            <li> Energy     : {{egn3}} </li>
+                            <li> Carbs      : {{cbn3}}</li>
+                            <li> Protein    : {{prn3}}</li>
+                            <li> Fat        : {{ftn3}}</li>
+                            <li> Fiber      : {{fbn3}}</li>
+                            <li> Cholestrol : {{cln3}}</li>
+                        </ul>    
+                    </th>
+                </tr>
+            </table>
+            <h3 class = "helvetica"> Recipe based recommendations </h3>
+            <table>
+                <tr>
+                    <th colspan="3"> <img src = "{{rrecimg1}}" height = 45px> <div>{{rrec1}}</div></th>
+                    <th> 
+                        <ul>
+                            <li> Energy     : {{egr1}} </li>
+                            <li> Carbs      : {{cbr1}}</li>
+                            <li> Protein    : {{prr1}}</li>
+                            <li> Fat        : {{ftr1}}</li>
+                            <li> Fiber      : {{fbr1}}</li>
+                            <li> Cholestrol : {{clr1}}</li>
+                        </ul>    
+                    </th>
+                </tr>
+                <tr>
+                    <th colspan="3"> <img src = "{{rrecimg2}}" height = 45px>
+                    <div>{{rrec2}}</div> </th>
+                    <th> 
+                        <ul>
+                            <li> Energy     : {{egr2}} </li>
+                            <li> Carbs      : {{cbr2}}</li>
+                            <li> Protein    : {{prr2}}</li>
+                            <li> Fat        : {{ftr2}}</li>
+                            <li> Fiber      : {{fbr2}}</li>
+                            <li> Cholestrol : {{clr2}}</li>
+                        </ul>    
+                    </th>
+                </tr>
+                <tr>
+                    <th colspan="3"> <img src = "{{rrecimg3}}" height = 45px> <div>{{rrec3}}</div></th>
+                    <th> 
+                        <ul>
+                            <li> Energy     : {{egr3}} </li>
+                            <li> Carbs      : {{cbr3}}</li>
+                            <li> Protein    : {{prr3}}</li>
+                            <li> Fat        : {{ftr3}}</li>
+                            <li> Fiber      : {{fbr3}}</li>
+                            <li> Cholestrol : {{clr3}}</li>
+                        </ul>    
+                    </th>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>
